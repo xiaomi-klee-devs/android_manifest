@@ -1,0 +1,24 @@
+Klee Android Building
+===========
+
+Getting started
+---------------
+
+To get started with Android, you'll need to get familiar with [Source Control Tools](https://source.android.com/setup/develop).
+
+To initialize your local repository using the Google kernel manifest, use a command like this:
+```
+repo init --depth=1 -u https://github.com/halcyonproject/manifest -b 16.2 --git-lfs
+```
+Then use a command like this to clone the local manifest at the root of your local repository:
+```
+git clone https://github.com/xiaomi-klee-devs/android_manifest .repo/local_manifests -b android/lineage-23.2
+```
+Then to sync up:
+```
+repo sync --force-sync --no-clone-bundle --no-tags -j"$(nproc --all)"
+```
+
+Building the ROM
+-------------------
+Just follow guide from the ROM manifest.

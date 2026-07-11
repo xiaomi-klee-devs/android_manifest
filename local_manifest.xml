@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <!-- POCO X8 Pro (klee) Device Manifest for Halcyon 16.2-->
+    <remote name="klee-blobs" fetch="https://github.com/xiaomi-klee-devs" />
+
+    <!-- Device core repos -->
+    <project name="device_xiaomi_klee" path="device/xiaomi/klee" remote="klee-blobs" revision="lineage-23.2" />
+    <project name="device_xiaomi_klee-kernel" path="device/xiaomi/klee-kernel" remote="klee-blobs" revision="lineage-23.2" />
+    <project name="device_xiaomi_klee-miuicamera" path="device/xiaomi/klee-miuicamera" remote="klee-blobs" revision="lineage-23.2" />
+    <project name="vendor_xiaomi_klee" path="vendor/xiaomi/klee" remote="klee-blobs" revision="lineage-23.2" />
+    <project name="vendor_xiaomi_klee-miuicamera" path="vendor/xiaomi/klee-miuicamera" remote="klee-blobs" revision="lineage-23.2" />
+
+    <!-- Misc Dependencies -->
+    <project name="hardware_xiaomi" path="hardware/xiaomi" remote="klee-blobs" revision="lineage-23.2" />
+    <project name="hardware_mediatek" path="hardware/mediatek" remote="klee-blobs" revision="lineage-23.2" />
+    <project name="device_mediatek_sepolicy_vndr" path="device/mediatek/sepolicy_vndr" remote="klee-blobs" revision="lineage-23.2" />
+    <project name="PixelOS-AOSP/android_packages_apps_DolbyAtmos" path="packages/apps/DolbyAtmos" remote="github" revision="sixteen-qpr2" />
+</manifest>
