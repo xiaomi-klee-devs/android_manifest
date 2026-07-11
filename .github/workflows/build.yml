@@ -1,0 +1,110 @@
+name: Build Kernel and Release
+
+on:
+  workflow_dispatch:
+
+env:
+  KERNEL_MANIFEST_URL: https://android.googlesource.com/kernel/manifest
+  KERNEL_MANIFEST_BRANCH: common-android15-6.6-2025-09
+  LOCAL_MANIFEST_REPO: https://github.com/xiaomi-klee-devs/android_manifest
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      date: ${{ steps.setdate.outputs.date }}
+    steps:
+      - name: Generate build date
+        id: setdate
+        run: echo "date=$(TZ=Asia/Jakarta date +%Y%m%d%H%M)" >> "$GITHUB_OUTPUT"
+
+  build_kernel:
+    name: Build Kernel
+    runs-on: ubuntu-latest
+    needs: prepare
+    env:
+      DATE: ${{ needs.prepare.outputs.date }}
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set environment
+        run: echo "ARTIFACT=$GITHUB_WORKSPACE/artifact" >> "$GITHUB_ENV"
+
+      - name: Install tools
+        run: |
+          mkdir -p ~/.bin
+          curl -s https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
+          chmod a+x ~/.bin/repo
+          echo "$HOME/.bin" >> "$GITHUB_PATH"
+          sudo apt-get update -y
+          sudo apt-get install -y device-tree-compiler python3
+
+      - name: Sync kernel source
+        run: |
+          repo init -u "$KERNEL_MANIFEST_URL" -b "$KERNEL_MANIFEST_BRANCH" --depth=1
+          git clone "$LOCAL_MANIFEST_REPO" .repo/local_manifests
+          repo sync --force-sync --no-clone-bundle --no-tags -j"$(nproc --all)"
+
+      - name: Fix Ubuntu 24.04 sandbox restriction
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
+      - name: Build kernel
+        run: |
+          mkdir -p "$ARTIFACT"
+          ./kernel_device_modules-6.6/build.sh
+          cd out/dist
+          zip -r9 "kernel-${DATE}.zip" .
+          mv "kernel-${DATE}.zip" "$ARTIFACT"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kernel-${{ env.DATE }}
+          path: ${{ env.ARTIFACT }}/*
+
+  create_release:
+    name: Create Release
+    needs: [prepare, build_kernel]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ needs.prepare.outputs.date }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup git authentication
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/xiaomi-klee-devs/android_manifest.git"
+
+      - name: Create git tag
+        run: |
+          git tag -a "$TAG" -m "Beyond what's right, i want to live with you"
+          git push origin "$TAG"
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifact
+
+      - name: Upload artifacts to release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.TAG }}
+          files: artifact/**
+          body: |
+            Device Target: POCO X8 Pro
+            Kernel Manifest: https://github.com/xiaomi-klee-devs/android_manifest.git
+            Kernel Version: 6.6.89
+            Clang Version: - (we're using bazel)
+
+            ### Changelog:
+            - just read the commits.
