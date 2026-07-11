@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <remote name="klee-blobs" fetch="https://github.com/xiaomi-klee-devs" />
+    <remote name="google" fetch="https://android.googlesource.com" />
+
+    <remove-project name="kernel/build" />
+    <remove-project name="kernel/common" />
+
+    <project path="build/kernel" name="kernel/build" remote="aosp">
+        <linkfile src="kleaf/bazel.sh" dest="tools/bazel" />
+        <linkfile src="build_test.sh" dest="build/build_test.sh" />
+        <linkfile src="config.sh" dest="build/config.sh" />
+        <linkfile src="multi-switcher.sh" dest="build/multi-switcher.sh" />
+        <linkfile src="abi" dest="build/abi" />
+        <linkfile src="static_analysis" dest="build/static_analysis" />
+    </project>
+
+    <project remote="klee-blobs" name="kernel-build-bazel_mgk_rules" path="build/bazel_mgk_rules" revision="bsp-klee-w-oss">
+        <linkfile src="BUILD.bazel" dest="BUILD" />
+        <linkfile src="kleaf/bazel.WORKSPACE" dest="WORKSPACE" />
+    </project>
+
+    <project remote="google" name="kernel/common" path="kernel-6.6" revision="android15-6.6-2025-09">
+        <linkfile src="build.config.constants" dest="build.config.constants" />
+    </project>
+    <project remote="klee-blobs" name="android_kernel_device_modules-6.6" path="kernel_device_modules-6.6" revision="bsp-klee-w-oss">
+        <linkfile src="build.config.mtk_kernel_device_modules" dest="build.config" />
+    </project>
+    <project remote="klee-blobs" name="android_vendor_mediatek_kernel_modules" path="vendor/mediatek/kernel_modules" revision="bsp-klee-w-oss"/>
+</manifest>
