@@ -85,7 +85,7 @@ jobs:
 
       - name: Create git tag
         run: |
-          git tag -a "$TAG" -m "Beyond what's right, i want to live with you"
+          git tag -a "$TAG" -m "Beyond what's right, i want to live with you, raa."
           git push origin "$TAG"
 
       - name: Download all artifacts
