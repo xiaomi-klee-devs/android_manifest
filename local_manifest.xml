@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
     <remote name="klee-blobs" fetch="https://github.com/xiaomi-klee-devs" />
-    <remote name="google" fetch="https://android.googlesource.com" />
 
     <remove-project name="kernel/build" />
     <remove-project name="kernel/common" />
@@ -20,7 +19,7 @@
         <linkfile src="kleaf/bazel.WORKSPACE" dest="WORKSPACE" />
     </project>
 
-    <project remote="google" name="kernel/common" path="kernel-6.6" revision="android15-6.6-2025-09">
+    <project remote="klee-blobs" name="android_kernel-6.6" path="kernel-6.6" revision="bsp-klee-w-oss">
         <linkfile src="build.config.constants" dest="build.config.constants" />
     </project>
     <project remote="klee-blobs" name="android_kernel_device_modules-6.6" path="kernel_device_modules-6.6" revision="bsp-klee-w-oss">
