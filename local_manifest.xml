@@ -14,5 +14,5 @@
     <project name="android_hardware_xiaomi" path="hardware/xiaomi" remote="klee-blobs" revision="lineage-23.2" />
     <project name="android_hardware_mediatek" path="hardware/mediatek" remote="klee-blobs" revision="lineage-23.2" />
     <project name="android_device_mediatek_sepolicy_vndr" path="device/mediatek/sepolicy_vndr" remote="klee-blobs" revision="lineage-23.2" />
-    <project name="PixelOS-AOSP/android_packages_apps_DolbyAtmos" path="packages/apps/DolbyAtmos" remote="github" revision="sixteen-qpr2" />
+    <project name="PixelOS-Ext/android_vendor_private_keys" path="vendor/private/keys" remote="PixelOS-Ext" revision="sixteen-qpr2" />
 </manifest>
