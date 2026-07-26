@@ -8,7 +8,7 @@ To get started with Android, you'll need to get familiar with [Source Control To
 
 To initialize your local repository using the Google kernel manifest, use a command like this:
 ```
-repo init --depth=1 -u https://github.com/halcyonproject/manifest -b 16.2 --git-lfs
+repo init --depth=1 -u https://github.com/PixelOS-Ext/android_manifest -b sixteen-qpr2 --git-lfs
 ```
 Then use a command like this to clone the local manifest at the root of your local repository:
 ```
@@ -16,9 +16,21 @@ git clone https://github.com/xiaomi-klee-devs/android_manifest .repo/local_manif
 ```
 Then to sync up:
 ```
-repo sync --force-sync --no-clone-bundle --no-tags -j"$(nproc --all)"
+repo sync --no-clone-bundle --no-tags -j"$(nproc --all)"
 ```
 
 Building the ROM
 -------------------
-Just follow guide from the ROM manifest.
+
+Initialize the ROM build environment by sourcing the envsetup.sh script:
+```
+source build/envsetup.sh
+```
+Use breakfast to configure the build for your device:
+```
+breakfast klee
+```
+Start the compilation:
+```
+m pixelos
+```
