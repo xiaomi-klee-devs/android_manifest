@@ -8,11 +8,11 @@ To get started with Android, you'll need to get familiar with [Source Control To
 
 To initialize your local repository using the Google kernel manifest, use a command like this:
 ```
-repo init --depth=1 -u https://github.com/PixelOS-Ext/android_manifest -b sixteen-qpr2 --git-lfs
+repo init --depth=1 -u https://github.com/Shinkaiprjkt/shinkai_manifest.git -b heptakaideka --git-lfs
 ```
 Then use a command like this to clone the local manifest at the root of your local repository:
 ```
-git clone https://github.com/xiaomi-klee-devs/android_manifest .repo/local_manifests -b android/lineage-23.2
+git clone https://github.com/xiaomi-klee-devs/android_manifest .repo/local_manifests -b android/lineage-24.0
 ```
 Then to sync up:
 ```
@@ -32,5 +32,5 @@ breakfast klee
 ```
 Start the compilation:
 ```
-m pixelos
+m shinkai
 ```

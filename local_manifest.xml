@@ -4,10 +4,10 @@
     <remote name="klee-blobs" fetch="https://github.com/xiaomi-klee-devs" />
 
     <!-- Device core repos -->
-    <project name="android_device_xiaomi_klee" path="device/xiaomi/klee" remote="klee-blobs" revision="lineage-23.2" />
-    <project name="android_device_xiaomi_klee-kernel" path="device/xiaomi/klee-kernel" remote="klee-blobs" revision="lineage-23.2" />
+    <project name="android_device_xiaomi_klee" path="device/xiaomi/klee" remote="klee-blobs" revision="lineage-24.0" />
+    <project name="android_device_xiaomi_klee-kernel" path="device/xiaomi/klee-kernel" remote="klee-blobs" revision="lineage-24.0" />
     <project name="android_device_xiaomi_klee-miuicamera" path="device/xiaomi/klee-miuicamera" remote="klee-blobs" revision="lineage-23.2" />
-    <project name="android_vendor_xiaomi_klee" path="vendor/xiaomi/klee" remote="klee-blobs" revision="lineage-23.2-fenrir" />
+    <project name="android_vendor_xiaomi_klee" path="vendor/xiaomi/klee" remote="klee-blobs" revision="lineage-24.0" />
     <project name="android_vendor_xiaomi_klee-miuicamera" path="vendor/xiaomi/klee-miuicamera" remote="klee-blobs" revision="lineage-23.2" />
 
     <!-- Misc Dependencies -->
