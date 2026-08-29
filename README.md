@@ -16,7 +16,7 @@ git clone https://github.com/xiaomi-klee-devs/android_manifest .repo/local_manif
 ```
 Then to sync up:
 ```
-repo sync
+repo sync --no-clone-bundle --no-tags -j"$(nproc --all)"
 ```
 
 Building the kernel
