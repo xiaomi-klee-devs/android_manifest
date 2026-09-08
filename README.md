@@ -8,7 +8,7 @@ To get started with Android, you'll need to get familiar with [Source Control To
 
 To initialize your local repository using the Google kernel manifest, use a command like this:
 ```
-repo init --depth=1 -u https://github.com/PixelOS-Ext/android_manifest -b sixteen-qpr2 --git-lfs
+repo init --depth=1 -u https://github.com/PixelOS-AOSP/android_manifest -b sixteen-qpr2 --git-lfs
 ```
 Then use a command like this to clone the local manifest at the root of your local repository:
 ```

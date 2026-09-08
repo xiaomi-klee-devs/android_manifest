@@ -7,12 +7,12 @@
     <project name="android_device_xiaomi_klee" path="device/xiaomi/klee" remote="klee-blobs" revision="lineage-23.2" />
     <project name="android_device_xiaomi_klee-kernel" path="device/xiaomi/klee-kernel" remote="klee-blobs" revision="lineage-23.2" />
     <project name="android_device_xiaomi_klee-miuicamera" path="device/xiaomi/klee-miuicamera" remote="klee-blobs" revision="lineage-23.2" />
-    <project name="android_vendor_xiaomi_klee" path="vendor/xiaomi/klee" remote="klee-blobs" revision="lineage-23.2-fenrir" />
+    <project name="android_vendor_xiaomi_klee" path="vendor/xiaomi/klee" remote="klee-blobs" revision="lineage-23.2" />
     <project name="android_vendor_xiaomi_klee-miuicamera" path="vendor/xiaomi/klee-miuicamera" remote="klee-blobs" revision="lineage-23.2" />
 
     <!-- Misc Dependencies -->
     <project name="android_hardware_xiaomi" path="hardware/xiaomi" remote="klee-blobs" revision="lineage-23.2" />
     <project name="android_hardware_mediatek" path="hardware/mediatek" remote="klee-blobs" revision="lineage-23.2" />
     <project name="android_device_mediatek_sepolicy_vndr" path="device/mediatek/sepolicy_vndr" remote="klee-blobs" revision="lineage-23.2" />
-    <project name="PixelOS-Ext/android_vendor_private_keys" path="vendor/private/keys" remote="github" revision="sixteen-qpr2" />
+    <project name="ShinkaiProject/shinkai_vendor_private_keys" path="vendor/private/keys" remote="github" revision="heptakaideka" />
 </manifest>
