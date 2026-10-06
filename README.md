@@ -8,7 +8,7 @@ To get started with Android, you'll need to get familiar with [Source Control To
 
 To initialize your local repository using the Google kernel manifest, use a command like this:
 ```
-repo init -u https://android.googlesource.com/kernel/manifest -b common-android15-6.6-2025-09 --depth=1
+repo init -u https://android.googlesource.com/kernel/manifest -b common-android15-6.6-2025-06 --depth=1
 ```
 Then use a command like this to clone the local manifest at the root of your local repository:
 ```
