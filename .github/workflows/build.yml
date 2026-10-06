@@ -47,6 +47,19 @@ jobs:
           git clone "$LOCAL_MANIFEST_REPO" .repo/local_manifests
           repo sync --force-sync --no-clone-bundle --no-tags -j"$(nproc --all)"
 
+      - name: Check MTK signing key
+        run: |
+          KEY="kernel_device_modules-6.6/certs/mtk_signing_key.pem"
+          if [ ! -s "$KEY" ]; then
+            echo "$KEY is missing or empty, downloading..."
+            rm -f "$KEY"
+            mkdir -p "$(dirname "$KEY")"
+            curl -fL https://raw.githubusercontent.com/xiaomi-klee-devs/android_kernel_device_modules-6.6/refs/heads/bsp-klee-w-oss/certs/mtk_signing_key.pem -o "$KEY"
+          fi
+          test -s "$KEY" || { echo "Key is empty or download failed"; exit 1; }
+          grep -q "PRIVATE KEY" "$KEY" || { echo "Key file is invalid (no PRIVATE KEY block)"; exit 1; }
+          echo "OK: $KEY is present"
+
       - name: Fix Ubuntu 24.04 sandbox restriction
         run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 
