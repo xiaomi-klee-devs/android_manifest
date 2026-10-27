@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-    <!-- POCO X8 Pro (klee) Device Manifest for Halcyon 16.2-->
+    <!-- POCO X8 Pro (klee) Device Manifest for Halcyon 17.0-->
     <remote name="klee-blobs" fetch="https://github.com/xiaomi-klee-devs" />
 
     <!-- Device core repos -->
@@ -15,4 +15,5 @@
     <project name="android_hardware_mediatek" path="hardware/mediatek" remote="klee-blobs" revision="lineage-24.0" />
     <project name="android_device_mediatek_sepolicy_vndr" path="device/mediatek/sepolicy_vndr" remote="klee-blobs" revision="lineage-24.0" />
     <project name="android_vendor_private_keys" path="vendor/private/keys" remote="klee-blobs" revision="lineage-24.0" />
+    <project name="packages_halcyon_apps_Dolby" path="packages/halcyon/apps/Dolby" remote="halcyon" />
 </manifest>
