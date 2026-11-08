@@ -5,7 +5,7 @@
     <remove-project name="kernel/build" />
     <remove-project name="kernel/common" />
 
-    <project path="build/kernel" name="kernel/build" remote="aosp">
+    <project path="build/kernel" name="android_build_kernel" remote="klee-blobs" revision="bsp-klee-w-oss">
         <linkfile src="kleaf/bazel.sh" dest="tools/bazel" />
         <linkfile src="build_test.sh" dest="build/build_test.sh" />
         <linkfile src="config.sh" dest="build/config.sh" />
