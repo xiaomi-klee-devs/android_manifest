@@ -11,7 +11,7 @@
     <project name="android_vendor_xiaomi_klee-miuicamera" path="vendor/xiaomi/klee-miuicamera" remote="klee-blobs" revision="lineage-24.0" />
 
     <!-- Misc Dependencies -->
-    <project name="android_hardware_xiaomi" path="hardware/xiaomi" remote="klee-blobs" revision="lineage-23.2" />
+    <project name="android_hardware_xiaomi" path="hardware/xiaomi" remote="klee-blobs" revision="lineage-24.0" />
     <project name="android_hardware_mediatek" path="hardware/mediatek" remote="klee-blobs" revision="lineage-24.0" />
     <project name="android_device_mediatek_sepolicy_vndr" path="device/mediatek/sepolicy_vndr" remote="klee-blobs" revision="lineage-24.0" />
     <project name="android_vendor_private_keys" path="vendor/private/keys" remote="klee-blobs" revision="lineage-24.0" />
